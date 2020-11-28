@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+#content{
+margin:100px;
+padding:40px;
+}
+#content .form-horizontal{
+padding:50px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+	border-radius: 15px;
+}
+#content .form-horizontal:hover{box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);}
+#heading{text-align:center;}
+</style>
+<script>
+function myFunction() {
+    window.print();
+}
+document.getElementById("demo").innerHTML = Math.random()*10000000000;
+</script>
+<div id="content">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navi">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">Civil Registry</a>
+    </div>
+    <ul class="nav navbar-nav">
+	<li><a href="{% url 'adminview' %}">Home</a></li>
+	<li class="active"><a href="{% url 'approveUser' %}">View Users</a></li>
+    <li><a href="{% url 'reportuser' %}">Search User</a></li>
+    </ul>
+	<ul class="nav navbar-nav navbar-right">
+      <li><a><span class="glyphicon glyphicon-user"></span> Hello, Admin</a></li>
+      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+ <form class="form-horizontal" id="form">
+   <div class="form-group">
+     <h1 id="heading">{{n.firstname}}</h1>
+     </div>
+   <div class="form-group"><hr id="hrow"></div>
+   <div class="form-group">
+    <label class="control-label col-sm-5">Aadhaar ID:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" readonly value={{aadhar.aad}}>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5">License Number:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="licenseno" readonly value={{lic.licenseno}}>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5">Voter ID:</label>
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="voterid" readonly value={{vote.voterid}}>
+    </div>
+  </div>
+<div class="form-group">
+    <label class="control-label col-sm-5">Passport Number :</label>
+    <div class="col-sm-3">
+      <input class="form-control"  type="text" name="passportno" readonly value={{pas.passportno}}>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5">PAN number:</label>
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="panno" readonly value={{pan.panno}}>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5" >Marriage Certificate Number:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="certid" readonly value={{marr.certno}}>
+    </div>
+  </div>
+   <div class="form-group"><hr id="throw"></div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-5" >First Name:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control"readonly value={{aadhar.firstname}}>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5">Last Name:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control"  readonly value={{aadhar.lastname}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5" >Date of Birth:</label>
+    <div class="col-sm-2">
+            <textarea class="form-control" rows="1" readonly >{{aadhar.birthdate}}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5">Gender:</label>
+    <div class="col-sm-2">
+	<input type="text" class="form-control" readonly value={{aadhar.gender}} >
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5" >Address:</label>
+    <div class="col-sm-3">
+  <textarea class="form-control" rows="3" readonly >{{aadhar.address}}</textarea>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5">City:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" readonly value={{aadhar.city}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5" >State:</label>
+    <div class="col-sm-3">
+	<input type="text" class="form-control" readonly value={{aadhar.state}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5" >Pincode:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" readonly value={{aadhar.pincode}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5" >Mobile:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" readonly value={{aadhar.mobileno}}>
+    </div>
+  </div>
+     <div class="form-group">
+    <div class="col-sm-3">
+     <button onclick="myFunction()">Print</button>
+    </div>
+  </div>
+</form>
+  </div>
+</body>
+</html>

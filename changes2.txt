@@ -1,0 +1,12 @@
+q=userdb(firstname=firstname,lastname=lastname,mobileno=mobileno,gender=gender,bloodgroup=bloodg,birthdate=dob,address=address,city=city,state=state,pincode=pincode,email=email,aad=aaid,app=0,user_id=user.id)
+q.save()
+return redirect(aadharregistration)
+#content{
+margin:30px;
+padding:40px;
+}
+#content .form-horizontal{
+  border:black 3px solid;
+padding:50px;
+  border-radius:20px;
+}

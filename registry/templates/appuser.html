@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<body>
+<style>
+#content{
+margin:100px;
+padding:40px;
+}
+#content .form-horizontal{
+padding:50px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+	border-radius: 15px;
+}
+#content .form-horizontal:hover{box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);}
+#heading{text-align:center;}
+</style>
+<script>
+</script>
+<div id="content">
+   <nav class="navbar navbar-inverse navbar-fixed-top" id="navi">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">Civil Registry</a>
+    </div>
+    <ul class="nav navbar-nav">
+	<li><a href="{% url 'adminview' %}">Home</a></li>
+	<li class="active"><a href="{% url 'approveUser' %}">View Users</a></li>
+    <li><a href="{% url 'reportuser' %}">Search User</a></li>
+    </ul>
+	<ul class="nav navbar-nav navbar-right">
+      <li><a><span class="glyphicon glyphicon-user"></span> Hello, Admin</a></li>
+      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+ <form class="form-horizontal" id="form" method="post">
+     {% csrf_token %}
+   <div class="form-group">
+     <h1 id="heading">{{app.firstname}}</h1>
+     </div>
+   <div class="form-group"><hr id="hrow"></div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" >First Name:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" value={{app.firstname}} >
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4">Last Name:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control"  readonly value={{app.lastname}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" >Date of Birth:</label>
+    <div class="col-sm-4">
+      <input type="text" name="dob" class="form-control" value={{app.birthdate}} readonly>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" >Blood Group:</label>
+    <div class="col-sm-2">
+	<input type="text" class="form-control" readonly value={{app.bloodgroup}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" >Address:</label>
+    <div class="col-sm-4">
+  <textarea class="form-control" rows="3" readonly >{{app.address}}</textarea>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4">City:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" readonly value={{app.city}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" >State:</label>
+    <div class="col-sm-2">
+	<input type="text" class="form-control" readonly value={{app.state}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" >Pincode:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" readonly value={{app.pincode}}>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" >Mobile:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" readonly value={{app.mobileno}}>
+    </div>
+  </div>
+     <div class="form-group">
+    <label class="control-label col-sm-4" >Approval:</label>
+    <div class="col-sm-4">
+       <div class="radio">
+  <label><input type="radio" name="app" value='1'>approve</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="app" value='-1'>Deny</label>
+</div>
+      </div>
+  </div>
+     <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-4">
+      <button type="submit" class="btn btn-default">Submit</button>
+
+    </div>
+  </div>
+ </form>
+  </div>
+</body>
+</html>

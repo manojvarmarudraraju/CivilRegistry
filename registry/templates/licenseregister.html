@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+#content{
+margin:30px;
+padding:40px;
+}
+#content .form-horizontal{
+padding:50px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+	border-radius: 15px;
+}
+#content .form-horizontal:hover{box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);}
+#heading{text-align:center;}
+
+</style>
+<script>
+</script>
+<div id="content">
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="navi">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">Civil Registry</a>
+    </div>
+    <ul class="nav navbar-nav">
+	<li><a href="{% url 'home' %}">Home</a></li>
+	  <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">Register
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'votercardregistration' %}">Voter ID</a></li>
+          <li><a href="{% url 'passportregistration' %}">Passport</a></li>
+          <li><a href="{% url 'pancardregistration' %}">Pan Card</a></li>
+		  <li><a href="{% url 'licenseregistration' %}">License</a></li>
+		  <li><a href="{% url 'marriagecertregistration' %}">Marriage Certificate</a></li>
+        </ul>
+      </li>
+      <li class="active"><a href="{% url 'viewall' %}">View</a></li>
+      <li><a href="{% url 'edit' %}">Edit</a></li>
+    </ul>
+	<ul class="nav navbar-nav navbar-right">
+      <li><a><span class="glyphicon glyphicon-user"></span> Hello</a></li>
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+ <form class="form-horizontal" id="form" method="post">
+ {% csrf_token %}
+   <div class="form-group">
+     <h1 id="heading">License Registration Form</h1>
+     </div>
+   <div class="form-group"><hr/></div>
+  <div class="form-group">
+    <label class="control-label col-sm-5" for="licenseno">License Number:</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" name="licenseno" placeholder="Enter License Number" maxlength="15">
+    </div>
+  </div>
+   <div class="form-group"><hr/></div>
+  <div class="form-group">
+    <label class="control-label col-sm-5">License Type:</label>
+    <div class="col-sm-3">
+      <div class="radio">
+  <label><input type="radio" name="type" value="0">Two Wheeler</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="type" value="1">Four Wheeler</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="type" value="2">Both</label>
+</div> 
+      </div>
+    </div>
+   <div class="form-group">
+    <label class="control-label col-sm-5" >Issue Date:</label>
+    <div class="col-sm-2">
+      <input type="date" name="issuedate" class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-5" >Expiry Date:</label>
+    <div class="col-sm-2">
+      <input type="date" name="expirydate" class="form-control">
+    </div>
+  </div>  
+  <div class="form-group">
+    <div class="col-sm-offset-5 col-sm-3">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+</form> 
+  </div>
+</body>
+</html>
